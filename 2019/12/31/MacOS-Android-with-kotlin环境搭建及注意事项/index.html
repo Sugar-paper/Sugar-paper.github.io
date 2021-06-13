@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MacOS Android with kotlin环境搭建及注意事项 | 啊呜哇的博客</title><meta name="keywords" content="Android Studio,Kotlin"><meta name="author" content="啊呜哇"><meta name="copyright" content="啊呜哇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Android Studio 安装进入安卓开发者官网下载对应系统的安装包进行安装，安装过程中Android SDK建议安装最新版的即可，虚拟设备ADV可以跳过，不过在开发过程中建议安装，方便调试。AndroidSDK也可以在启动页的Configure→SDKManger增添。 由于官方支持Kotlin为安卓开发的正式语言，现在的版本在安装时就已经包含。 JDK安装JDK安装要注意版本号，Andr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacOS Android with kotlin环境搭建及注意事项">
+<meta property="og:url" content="http://example.com/2019/12/31/MacOS-Android-with-kotlin%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/index.html">
+<meta property="og:site_name" content="啊呜哇的博客">
+<meta property="og:description" content="Android Studio 安装进入安卓开发者官网下载对应系统的安装包进行安装，安装过程中Android SDK建议安装最新版的即可，虚拟设备ADV可以跳过，不过在开发过程中建议安装，方便调试。AndroidSDK也可以在启动页的Configure→SDKManger增添。 由于官方支持Kotlin为安卓开发的正式语言，现在的版本在安装时就已经包含。 JDK安装JDK安装要注意版本号，Andr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/安卓kotlin.png">
+<meta property="article:published_time" content="2019-12-31T03:29:41.000Z">
+<meta property="article:modified_time" content="2020-03-07T10:48:07.000Z">
+<meta property="article:author" content="啊呜哇">
+<meta property="article:tag" content="Android Studio">
+<meta property="article:tag" content="Kotlin">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/安卓kotlin.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2019/12/31/MacOS-Android-with-kotlin%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"QUDKLRIN85","apiKey":"b629df4f3c189963291930813dbedfe7","indexName":"search","hits":{"per_page":8},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":436},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MacOS Android with kotlin环境搭建及注意事项',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-03-07 18:48:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/base/avatar.jpeg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/gif/loading.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-inbox"></i><span> 速览</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标记标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-paw"></i><span> 文章分类</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw far fa-calendar-alt"></i><span> 时间归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-ellipsis-v"></i><span> 我喜欢</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/player/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 影视</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-image"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-id-card"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/安卓kotlin.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">啊呜哇的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-inbox"></i><span> 速览</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标记标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-paw"></i><span> 文章分类</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw far fa-calendar-alt"></i><span> 时间归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-ellipsis-v"></i><span> 我喜欢</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/player/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 影视</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-image"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-id-card"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MacOS Android with kotlin环境搭建及注意事项</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-12-31T03:29:41.000Z" title="发表于 2019-12-31 11:29:41">2019-12-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-03-07T10:48:07.000Z" title="更新于 2020-03-07 18:48:07">2020-03-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MacOS Android with kotlin环境搭建及注意事项"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="/assets/js/APlayer.min.js"> </script><h1 id="Android-Studio-安装"><a href="#Android-Studio-安装" class="headerlink" title="Android Studio 安装"></a>Android Studio 安装</h1><p>进入<a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/">安卓开发者官网</a>下载对应系统的安装包进行安装，安装过程中Android SDK建议安装最新版的即可，虚拟设备ADV可以跳过，不过在开发过程中建议安装，方便调试。AndroidSDK也可以在启动页的Configure→SDKManger增添。</p>
+<p>由于官方支持Kotlin为安卓开发的正式语言，现在的版本在安装时就已经包含。</p>
+<h1 id="JDK安装"><a href="#JDK安装" class="headerlink" title="JDK安装"></a>JDK安装</h1><p>JDK安装要注意版本号，AndroidStudio并不支持所有的JDK版本.</p>
+<ul>
+<li>随便建一个kotlin的安卓工程。</li>
+<li>在AndroidStudio的configure-&gt;Preferences中Kotlin Complier选项卡Kotlin to jvm中可以看到</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/%E6%88%AA%E5%B1%8F2019-12-3117.38.01.png"></p>
+<ul>
+<li>当前版本中，如上图所示支持jdk6、jdk8直至12的版本。</li>
+<li>在<a target="_blank" rel="noopener" href="https://www.oracle.com/technetwork/java/javase/overview/index.html">Oracle</a>下载页面你可以看到提供的版本有8，11，13当然你也可以下载到其他版本</li>
+<li>对比可以发现13目前是还不能支持的，11已经是LST版本，安装11的版本即可。</li>
+</ul>
+<p>如果安装8的版本将会出现部分编译错误，如果安装13的版本将会有极大可能导致项目无法编译。</p>
+<h1 id="dataBinding支持的变化"><a href="#dataBinding支持的变化" class="headerlink" title="dataBinding支持的变化"></a>dataBinding支持的变化</h1><p>使用JAVA的项目中在build.gradle添加</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">  defaultConfig&#123;</span><br><span class="line">    dataBing&#123;</span><br><span class="line">    	endabled = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用Kotlin的项目中需要先开启kapt，在build.gradle中</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">	defaultConfig&#123;</span><br><span class="line">		apply <span class="attr">plugin :</span><span class="string">&#x27;kotlin-kapt&#x27;</span></span><br><span class="line">		dataBinding&#123;</span><br><span class="line">			enabled = ture</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies&#123;</span><br><span class="line">	kapt&#123;<span class="string">&quot;groupId:artifactId:version&quot;</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">啊呜哇</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2019/12/31/MacOS-Android-with-kotlin%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">http://example.com/2019/12/31/MacOS-Android-with-kotlin%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">啊呜哇的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android-Studio/">Android Studio</a><a class="post-meta__tags" href="/tags/Kotlin/">Kotlin</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/安卓kotlin.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/mm_reward.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/mm_reward.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/qrcode.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/qrcode.png" alt="QQ"/></a><div class="post-qr-code-desc">QQ</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/02/24/%E9%80%9A%E8%BF%87%E6%8E%A7%E5%88%B6%E5%8F%B0cmd%E6%88%96PowerShell%E6%89%93%E5%BC%80UWP%E5%BA%94%E7%94%A8/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/win10uwp.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">通过控制台cmd或PowerShell打开UWP应用</div></div></a></div><div class="next-post pull-right"><a href="/2019/10/24/%E5%AE%89%E5%8D%93%E6%9C%BA%E6%90%AD%E5%BB%BALinux-web%E6%9C%8D%E5%8A%A1%E5%99%A8/"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/linux服务器.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">安卓机搭建Linux web服务器</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/base/avatar.jpeg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/gif/loading.gif'" alt="avatar"/><div class="author-info__name">啊呜哇</div><div class="author-info__description">学习、开源、分享</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Candy-data" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/base/weixin.png" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=690113986&amp;site=qq&amp;menu=yes&quot;&gt;&lt;img border=&quot;0" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:roronazorosky@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-Studio-%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Android Studio 安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDK%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">JDK安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dataBinding%E6%94%AF%E6%8C%81%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">dataBinding支持的变化</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/29/qtError20/" title="qtError20"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/gallery/wallpaper/wallpaper-229708.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="qtError20"/></a><div class="content"><a class="title" href="/2021/05/29/qtError20/" title="qtError20">qtError20</a><time datetime="2021-05-28T16:25:01.000Z" title="发表于 2021-05-29 00:25:01">2021-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/17/C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Ec-%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98/" title="C回调函数与c++中的改变"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C回调函数与c++中的改变"/></a><div class="content"><a class="title" href="/2021/04/17/C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Ec-%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98/" title="C回调函数与c++中的改变">C回调函数与c++中的改变</a><time datetime="2021-04-17T02:35:27.000Z" title="发表于 2021-04-17 10:35:27">2021-04-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/08/NTP%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" title="NTP详解及底层实现"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/watchtimespace.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NTP详解及底层实现"/></a><div class="content"><a class="title" href="/2020/12/08/NTP%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" title="NTP详解及底层实现">NTP详解及底层实现</a><time datetime="2020-12-08T01:35:04.000Z" title="发表于 2020-12-08 09:35:04">2020-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/14/sqlite3%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/" title="sqlite3内存泄露"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/sqlite3%E5%9B%BE%E6%A0%87.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sqlite3内存泄露"/></a><div class="content"><a class="title" href="/2020/11/14/sqlite3%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/" title="sqlite3内存泄露">sqlite3内存泄露</a><time datetime="2020-11-14T11:46:13.000Z" title="发表于 2020-11-14 19:46:13">2020-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/16/QT%E4%B8%AD%E5%AE%9E%E7%8E%B0http%E5%8D%8F%E8%AE%AE/" title="QT中实现http协议"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/HTTP_REQUIREHEADER.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="QT中实现http协议"/></a><div class="content"><a class="title" href="/2020/10/16/QT%E4%B8%AD%E5%AE%9E%E7%8E%B0http%E5%8D%8F%E8%AE%AE/" title="QT中实现http协议">QT中实现http协议</a><time datetime="2020-10-16T03:05:25.000Z" title="发表于 2020-10-16 11:05:25">2020-10-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 啊呜哇</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'vglM0WTMHD7SEXanP3uXfQfD-gzGzoHsz',
+      appKey: 'P6DSkIuTX08yAUjd20Ou7dAq',
+      placeholder: '别只顾着看，来说点什么吧！(づ｡◕‿◕｡)づ',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="2565537169" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="canvas_nest" defer="defer" color="69,113,98" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="evil,努力,专注,+1,佛系,精神小伙,学习ing,加油,可爱,霸气,赚钱,豪横,码字,搬砖,帅气" data-fontsize="15px" data-random="true" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>csv格式文件 | 啊呜哇的博客</title><meta name="keywords" content="c++,csv"><meta name="author" content="啊呜哇"><meta name="copyright" content="啊呜哇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="背景原本不知道这种格式的文件的，如果你现在直接用office或者wps创建的主要是doc、docx、ppt、pptx、rtf、xls、xlsx等这些后缀，用office打开后还会提示你是否转换为正确的文件格式。由于接触到了这个需求，便进行了一番了解。 CSV(Comma-Separared Velues)什么是csv文件？ csv中文被叫做逗号分隔值文件。最常用在程序间的表格类型的数据交换 ，往">
+<meta property="og:type" content="article">
+<meta property="og:title" content="csv格式文件">
+<meta property="og:url" content="http://example.com/2020/05/31/csv%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:site_name" content="啊呜哇的博客">
+<meta property="og:description" content="背景原本不知道这种格式的文件的，如果你现在直接用office或者wps创建的主要是doc、docx、ppt、pptx、rtf、xls、xlsx等这些后缀，用office打开后还会提示你是否转换为正确的文件格式。由于接触到了这个需求，便进行了一番了解。 CSV(Comma-Separared Velues)什么是csv文件？ csv中文被叫做逗号分隔值文件。最常用在程序间的表格类型的数据交换 ，往">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/csvcover.png">
+<meta property="article:published_time" content="2020-05-31T07:04:02.000Z">
+<meta property="article:modified_time" content="2021-06-11T08:18:51.920Z">
+<meta property="article:author" content="啊呜哇">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="csv">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/csvcover.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2020/05/31/csv%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"QUDKLRIN85","apiKey":"b629df4f3c189963291930813dbedfe7","indexName":"search","hits":{"per_page":8},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":436},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'csv格式文件',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-11 16:18:51'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    })(window)</script><style type="text/css">#toggle-sidebar {bottom: 80px}</style></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/base/avatar.jpeg" onerror="onerror=null;src='https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/gif/loading.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-inbox"></i><span> 速览</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标记标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-paw"></i><span> 文章分类</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw far fa-calendar-alt"></i><span> 时间归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-ellipsis-v"></i><span> 我喜欢</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/player/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 影视</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-image"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-id-card"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/csvcover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">啊呜哇的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-inbox"></i><span> 速览</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标记标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-paw"></i><span> 文章分类</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw far fa-calendar-alt"></i><span> 时间归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-ellipsis-v"></i><span> 我喜欢</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/player/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 影视</span></a></li><li><a class="site-page child" href="/photo/"><i class="fa-fw fas fa-image"></i><span> 图库</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-id-card"></i><span> 关于我</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">csv格式文件</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-05-31T07:04:02.000Z" title="发表于 2020-05-31 15:04:02">2020-05-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-11T08:18:51.920Z" title="更新于 2021-06-11 16:18:51">2021-06-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="csv格式文件"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><script src="/assets/js/APlayer.min.js"> </script><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>原本不知道这种格式的文件的，如果你现在直接用office或者wps创建的主要是doc、docx、ppt、pptx、rtf、xls、xlsx等这些后缀，用office打开后还会提示你是否转换为正确的文件格式。由于接触到了这个需求，便进行了一番了解。</p>
+<h1 id="CSV-Comma-Separared-Velues"><a href="#CSV-Comma-Separared-Velues" class="headerlink" title="CSV(Comma-Separared Velues)"></a>CSV(Comma-Separared Velues)</h1><h2 id="什么是csv文件？"><a href="#什么是csv文件？" class="headerlink" title="什么是csv文件？"></a>什么是csv文件？</h2><ul>
+<li>csv中文被叫做逗号分隔值文件。最常用在程序间的表格类型的<mark class="hl-label green">数据交换</mark> ，往往对这种文件的格式进行了一些变化。</li>
+<li>csv文件没有统一的标准，没有固定的字符编码，因此不同软件对此类文件不一定能进行处理。</li>
+</ul>
+<h2 id="csv文件规则（摘自：baidu百科）"><a href="#csv文件规则（摘自：baidu百科）" class="headerlink" title="csv文件规则（摘自：baidu百科）"></a>csv文件规则（摘自：baidu百科）</h2><ol>
+<li>开头是不留空，以行为单位。</li>
+<li>可含或不含列名，含列名则居文件第一行。</li>
+<li>一行数据不跨行，无空行。</li>
+<li>以半角逗号（即，）作分隔符，列为空也要表达其存在。</li>
+<li>列内容如存在半角引号（即”），替换成半角双引号（””）转义，即用半角引号（即””）将该字段值包含起来。</li>
+<li>文件读写时引号，逗号操作规则互逆。</li>
+<li>内码格式不限，可为 ASCII、Unicode 或者其他。</li>
+<li>不支持数字</li>
+<li>不支持特殊字符</li>
+</ol>
+<h2 id="csv文件实例"><a href="#csv文件实例" class="headerlink" title="csv文件实例"></a>csv文件实例</h2><p>其实分隔符不是必须为逗号，其他符号也行，只要保证规则不变就行，当然你的代码中进行解析是也是需要保持一致的。在游戏中就有很多各种变体的csv文件，尤其是小说文字类型的游戏，可以进行参考。<br>例如下图，在我的电脑中搜索出来的csv文件，这是qt中的，其中就有逗号和分号的例子<br><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/csv%E6%96%87%E4%BB%B6.png"><br>csv文件读取示例子</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*excelcsv.h*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> EXCELCSV_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXCELCSV_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QObject&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Common.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QList&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QStringList&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExcelCsv</span> :</span> <span class="keyword">public</span> FileBase</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">ExcelCsv</span><span class="params">(QObject *parent = <span class="literal">nullptr</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">csvRead</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* path,<span class="keyword">const</span> <span class="keyword">char</span> spara_str = <span class="string">&#x27;,&#x27;</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">creatCsvfile</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> c)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">savefile</span><span class="params">(QByteArray ba = <span class="literal">NULL</span>, <span class="keyword">const</span> <span class="keyword">char</span>* path = <span class="literal">NULL</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">QByteArray <span class="title">getCsvByte</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> c = <span class="string">&#x27;,&#x27;</span>)</span> <span class="keyword">const</span></span>;</span><br><span class="line">    QList&lt;QStringList&gt;* csvdata;</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*excelcsv.cpp*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief ExcelCsv::csvRead 读取csv文件</span></span><br><span class="line"><span class="comment"> * @param path              路径</span></span><br><span class="line"><span class="comment"> * @param spara_str         分隔符</span></span><br><span class="line"><span class="comment"> * @return </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> </span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ExcelCsv::csvRead</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* path,<span class="keyword">const</span> <span class="keyword">char</span> spara_str)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(path == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">QFile <span class="title">file</span><span class="params">(path)</span></span>;</span><br><span class="line">    <span class="keyword">if</span>(!file.<span class="built_in">open</span>(QFile::ReadOnly))&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!file.<span class="built_in">atEnd</span>())&#123;</span><br><span class="line">        QString line = file.<span class="built_in">readLine</span>();</span><br><span class="line">        QStringList list = line.<span class="built_in">split</span>(spara_str);</span><br><span class="line">        csvdata-&gt;<span class="built_in">append</span>(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief ExcelCsv::creatCsvfile 生成csv文件</span></span><br><span class="line"><span class="comment"> * @param c                      分割符</span></span><br><span class="line"><span class="comment"> * @return </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">bool</span> ExcelCsv::<span class="built_in">creatCsvfile</span>(<span class="keyword">const</span> <span class="keyword">char</span> c) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">   QByteArray ba = <span class="built_in">getCsvByte</span>(c);</span><br><span class="line">   <span class="keyword">return</span> <span class="built_in">savefile</span>(ba);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief ExcelCsv::getCsvByte 获取二进制数据</span></span><br><span class="line"><span class="comment"> * @param c                    分隔符</span></span><br><span class="line"><span class="comment"> * @return </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">QByteArray <span class="title">ExcelCsv::getCsvByte</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> c)</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    QString result;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i &lt; csvdata-&gt;<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">        result.<span class="built_in">append</span>(csvdata-&gt;<span class="built_in">at</span>(i).<span class="built_in">join</span>(c));</span><br><span class="line">        result.<span class="built_in">append</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    result = result.<span class="built_in">left</span>(result.<span class="built_in">length</span>() - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> result.<span class="built_in">toUtf8</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">啊呜哇</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/05/31/csv%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/">http://example.com/2020/05/31/csv%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">啊呜哇的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/c/">c++</a><a class="post-meta__tags" href="/tags/csv/">csv</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/csvcover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/mm_reward.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/mm_reward.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/alipay.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/qrcode.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/reward/qrcode.png" alt="QQ"/></a><div class="post-qr-code-desc">QQ</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/06/13/libmosquitto%E5%BA%93%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/gallery/wallpaper/wallpaper-229708.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">libmosquitto库基本使用</div></div></a></div><div class="next-post pull-right"><a href="/2020/05/17/%E7%89%A9%E8%81%94%E7%BD%91MQTT%E5%8D%8F%E8%AE%AE/"><img class="next-cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/MQTTcover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">物联网MQTT协议</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/17/C回调函数与c-中的改变/" title="C回调函数与c++中的改变"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-17</div><div class="title">C回调函数与c++中的改变</div></div></a></div><div><a href="/2020/10/16/QT中实现http协议/" title="QT中实现http协议"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/HTTP_REQUIREHEADER.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-10-16</div><div class="title">QT中实现http协议</div></div></a></div><div><a href="/2020/08/22/UTF-8编码/" title="系统中的编码"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/ASCII%E7%A0%81%E4%B8%80%E8%A7%88.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-08-22</div><div class="title">系统中的编码</div></div></a></div><div><a href="/2020/12/08/NTP详解及底层实现/" title="NTP详解及底层实现"><img class="cover" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/watchtimespace.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-12-08</div><div class="title">NTP详解及底层实现</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/base/avatar.jpeg" onerror="this.onerror=null;this.src='https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/gif/loading.gif'" alt="avatar"/><div class="author-info__name">啊呜哇</div><div class="author-info__description">学习、开源、分享</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">39</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Candy-data" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/base/weixin.png" target="_blank" title="wechat"><i class="fab fa-weixin"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=690113986&amp;site=qq&amp;menu=yes&quot;&gt;&lt;img border=&quot;0" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="mailto:roronazorosky@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSV-Comma-Separared-Velues"><span class="toc-number">2.</span> <span class="toc-text">CSV(Comma-Separared Velues)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFcsv%E6%96%87%E4%BB%B6%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">什么是csv文件？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csv%E6%96%87%E4%BB%B6%E8%A7%84%E5%88%99%EF%BC%88%E6%91%98%E8%87%AA%EF%BC%9Abaidu%E7%99%BE%E7%A7%91%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">csv文件规则（摘自：baidu百科）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#csv%E6%96%87%E4%BB%B6%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">csv文件实例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/05/29/qtError20/" title="qtError20"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/gallery/wallpaper/wallpaper-229708.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="qtError20"/></a><div class="content"><a class="title" href="/2021/05/29/qtError20/" title="qtError20">qtError20</a><time datetime="2021-05-28T16:25:01.000Z" title="发表于 2021-05-29 00:25:01">2021-05-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/17/C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Ec-%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98/" title="C回调函数与c++中的改变"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C回调函数与c++中的改变"/></a><div class="content"><a class="title" href="/2021/04/17/C%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%8Ec-%E4%B8%AD%E7%9A%84%E6%94%B9%E5%8F%98/" title="C回调函数与c++中的改变">C回调函数与c++中的改变</a><time datetime="2021-04-17T02:35:27.000Z" title="发表于 2021-04-17 10:35:27">2021-04-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/12/08/NTP%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" title="NTP详解及底层实现"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/watchtimespace.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="NTP详解及底层实现"/></a><div class="content"><a class="title" href="/2020/12/08/NTP%E8%AF%A6%E8%A7%A3%E5%8F%8A%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" title="NTP详解及底层实现">NTP详解及底层实现</a><time datetime="2020-12-08T01:35:04.000Z" title="发表于 2020-12-08 09:35:04">2020-12-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/11/14/sqlite3%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/" title="sqlite3内存泄露"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/sqlite3%E5%9B%BE%E6%A0%87.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="sqlite3内存泄露"/></a><div class="content"><a class="title" href="/2020/11/14/sqlite3%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2/" title="sqlite3内存泄露">sqlite3内存泄露</a><time datetime="2020-11-14T11:46:13.000Z" title="发表于 2020-11-14 19:46:13">2020-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/10/16/QT%E4%B8%AD%E5%AE%9E%E7%8E%B0http%E5%8D%8F%E8%AE%AE/" title="QT中实现http协议"><img src= "data:image/gif;base64,R0lGODdhAQABAPAAAMPDwwAAACwAAAAAAQABAAACAkQBADs=" data-lazy-src="https://cdn.jsdelivr.net/gh/Sugar-paper/picBed/blog/HTTP_REQUIREHEADER.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="QT中实现http协议"/></a><div class="content"><a class="title" href="/2020/10/16/QT%E4%B8%AD%E5%AE%9E%E7%8E%B0http%E5%8D%8F%E8%AE%AE/" title="QT中实现http协议">QT中实现http协议</a><time datetime="2020-10-16T03:05:25.000Z" title="发表于 2020-10-16 11:05:25">2020-10-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 啊呜哇</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="algolia-search"><div class="search-dialog"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/algolia.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'vglM0WTMHD7SEXanP3uXfQfD-gzGzoHsz',
+      appKey: 'P6DSkIuTX08yAUjd20Ou7dAq',
+      placeholder: '别只顾着看，来说点什么吧！(づ｡◕‿◕｡)づ',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="2565537169" data-server="tencent" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script id="canvas_nest" defer="defer" color="69,113,98" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="false" data-text="evil,努力,专注,+1,佛系,精神小伙,学习ing,加油,可爱,霸气,赚钱,豪横,码字,搬砖,帅气" data-fontsize="15px" data-random="true" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener toc scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
